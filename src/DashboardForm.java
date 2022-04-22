@@ -1,10 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.renderable.RenderableImage;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class DashboardForm extends JFrame {
     private JPanel dashboardPanel;
@@ -44,6 +43,21 @@ public class DashboardForm extends JFrame {
                 }
                 else { dispose();}
             }
+        brnRegister.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                RegistrationForm registrationForm = new RegistrationForm(DashboardForm.this);
+                User user = registrationForm.user;
+
+                if (user != null){
+                    JOptionPane.showMessageDialog(DashboardForm.this,
+                            "New User: " + user.username,
+                            "Successful Registration",
+                            JOptionPane.INFORMATION_MESSAGE);
+
+                }
+            }
+        });
     }
 
     private boolean connectToDatabase(){
@@ -56,7 +70,19 @@ public class DashboardForm extends JFrame {
         try{
             Connection conn = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
             Statement statement = conn.createStatement();
-            statement.executeUpdate(" ");
+            statement.executeUpdate("CREATE DATABASE IF NOT EXISTS northwind");
+            statement.close();
+            conn.close();
+            statement = conn.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT COUNT(*) FROM users");
+
+            if(resultSet.next()){
+                int numUsers = resultSet.getInt(1);
+                if(numUsers > 0){
+                    hasRegisteredUsers = true;
+                }
+            }
+
             statement.close();
             conn.close();
         } catch (Exception e) {
@@ -65,5 +91,9 @@ public class DashboardForm extends JFrame {
 
         return hasRegisteredUsers;
 
+    }
+
+    public static void main(String[] args) {
+        DashboardForm myForm = new DashboardForm();
     }
 }
