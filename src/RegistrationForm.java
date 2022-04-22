@@ -77,7 +77,7 @@ public class RegistrationForm extends JDialog{
         User user = null;
         final String DB_URL = "jdbc:mysql://localhost/northwind";
         final String USERNAME = "root";
-        final String PASSWORD = "user";
+        final String PASSWORD = "root";
 
         try{
             Connection conn = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
