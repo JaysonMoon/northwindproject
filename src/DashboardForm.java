@@ -10,7 +10,8 @@ import java.sql.Statement;
 public class DashboardForm extends JFrame {
     private JPanel dashboardPanel;
     private JLabel lbAdmin;
-    private JButton btnRegister;
+    private JButton btnAddUser;
+    private JButton btnEdit;
 
     public DashboardForm() {
         setTitle("Dashborad");
@@ -48,7 +49,7 @@ public class DashboardForm extends JFrame {
                 dispose();
             }
         }
-        btnRegister.addActionListener(new ActionListener() {
+        btnAddUser.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 RegistrationForm registrationForm = new RegistrationForm(DashboardForm.this);
