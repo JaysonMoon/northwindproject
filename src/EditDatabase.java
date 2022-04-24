@@ -9,6 +9,7 @@ public class EditDatabase extends JFrame{
     private JButton btnProducts;
     private JButton btnShippers;
     private JButton btnSuppliers;
+    private JTable table1;
 
     public static void main(String[] args) {
         EditDatabase database = new EditDatabase();
