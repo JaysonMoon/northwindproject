@@ -14,7 +14,7 @@ public class DashboardForm extends JFrame {
     private JButton btnEdit;
 
     public DashboardForm() {
-        setTitle("Dashborad");
+        setTitle("Dashboard");
         setContentPane(dashboardPanel);
         setMinimumSize(new Dimension(500, 429));
         setSize(1200, 700);
@@ -61,6 +61,13 @@ public class DashboardForm extends JFrame {
                             "Successful Registration",
                             JOptionPane.INFORMATION_MESSAGE);
                 }
+            }
+        });
+        btnEdit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                EditDatabase ed = new EditDatabase();
+                ed.setVisible(true);
             }
         });
     }
