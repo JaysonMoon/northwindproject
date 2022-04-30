@@ -2,10 +2,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.sql.*;
 
 public class DashboardForm extends JFrame {
     private JPanel dashboardPanel;
@@ -72,6 +71,35 @@ public class DashboardForm extends JFrame {
         });
     }
 
+    Timer t;
+
+
+    public void logout(){
+        this.setVisible(false);
+        stopTimer();
+    }
+    public void session(){
+        stopTimer();
+        t = new Timer(5555, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Timer stopped");
+                logout();
+            }
+        });
+        t.start();
+
+    }
+    public void stopTimer(){
+        if(t != null){
+            t.stop();
+        }
+    }
+
+    public void userInteraction(){
+        session();
+    }
+
     private boolean connectToDatabase() {
         boolean hasRegistredUsers = false;
 
@@ -117,8 +145,24 @@ public class DashboardForm extends JFrame {
 
         return hasRegistredUsers;
     }
+/*    Timer swingtimer = new Timer(5555, new SwingTimerActionListener());
+        swingtimer.start();
+        try{
+        Thread.sleep(5555);
+    }
+        catch(InterruptedException e){
+        swingtimer.stop();
+        System.out.println("Timeout");
+    }
 
+}
+class SwingTimerActionListener implements ActionListener{
+    public void actionPerformed(ActionEvent evnt){
+        JOPtionePane.showMessageDialog(null, "Timeout");
+    }
+*/
     public static void main(String[] args) {
         DashboardForm myForm = new DashboardForm();
+
     }
 }
