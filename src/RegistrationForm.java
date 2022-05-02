@@ -55,7 +55,7 @@ public class RegistrationForm extends JDialog{
 
         if(!password.equals(confirmPassword)){
             JOptionPane.showMessageDialog(this,
-                    "Confirm password does nto match",
+                    "Passwords must match",
                     "Try again",
                     JOptionPane.ERROR_MESSAGE);
             return;

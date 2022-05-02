@@ -145,22 +145,21 @@ public class DashboardForm extends JFrame {
 
         return hasRegistredUsers;
     }
-/*    Timer swingtimer = new Timer(5555, new SwingTimerActionListener());
-        swingtimer.start();
-        try{
-        Thread.sleep(5555);
+    /*    Timer swingtimer = new Timer(5555, new SwingTimerActionListener());
+            swingtimer.start();
+            try{
+            Thread.sleep(5555);
+        }
+            catch(InterruptedException e){
+            swingtimer.stop();
+            System.out.println("Timeout");
+        }
     }
-        catch(InterruptedException e){
-        swingtimer.stop();
-        System.out.println("Timeout");
-    }
-
-}
-class SwingTimerActionListener implements ActionListener{
-    public void actionPerformed(ActionEvent evnt){
-        JOPtionePane.showMessageDialog(null, "Timeout");
-    }
-*/
+    class SwingTimerActionListener implements ActionListener{
+        public void actionPerformed(ActionEvent evnt){
+            JOPtionePane.showMessageDialog(null, "Timeout");
+        }
+    */
     public static void main(String[] args) {
         DashboardForm myForm = new DashboardForm();
 
