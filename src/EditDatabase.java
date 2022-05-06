@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
 import java.sql.*;
 
 public class EditDatabase extends JFrame{
@@ -113,6 +114,8 @@ public class EditDatabase extends JFrame{
                     throw new RuntimeException(ex);
                 }
             }
+        });
+        tableShippers.addComponentListener(new ComponentAdapter() {
         });
     }
     public void connect(){
